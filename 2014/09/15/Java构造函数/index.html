@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: Android | Vince</title>
+  <title>Java构造函数 | Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -171,7 +171,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Java构造函数</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -190,47 +190,103 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/构造函数/' style='color:#D5D5D5'>构造函数</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java构造函数</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-09-15T11:00:38.000Z"
+                              itemprop="datePublished">9月 15 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/Android/'>Android</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/13/2014-9-13/">Android学习路线</a>
-            </h1>
+        <section class="post-content">
+            <p>在学习面向对象过程中，对于构造函数的使用非常方便，可以不用每new一个对象就要不断输入，但是个人发现，还要结合函数的重载才是最好的，请看下面的代码：</p>
+<h3 id="新建一个类，dog-java">新建一个类，dog.java</h3>
+<pre><code><span class="keyword">class</span> dog{
+   dog(){
+        <span class="comment">//默认的函数，可以忽略</span>
+   }
+    <span class="comment">//下面重新构造dog（）函数</span>
+   dog(<span class="built_in">String</span> a,int b,<span class="built_in">String</span> c){
+    name=a;
+    age=b;
+    color=c;
+   }
+   <span class="built_in">String</span> name;
+   int age;
+   <span class="built_in">String</span> color;
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-13T12:49:53.000Z"
-                      itemprop="datePublished">9月 13 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p>很多朋友都对学习路线问题感到迷茫，特别是还在上学的朋友们。在这里就详细的为大家介绍一下。<br>
-                
-            </p>
-            
+
+}
+</code></pre><h3 id="新建一个测试类，testjava">新建一个测试类，testjava</h3>
+<pre><code>class test{
+<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String args[]){
+    dog d1=<span class="keyword">new</span> dog(<span class="string">"wang"</span>,<span class="number">2</span>,<span class="string">"back"</span>);<span class="comment">//重载了构造函数，可以直接输入</span>
+    dog d2=<span class="keyword">new</span> dog(<span class="string">"cai"</span>,<span class="number">2</span>,<span class="string">"white"</span>);<span class="comment">//方便，不用一个个输入</span>
+    System.<span class="keyword">out</span>.println(d1.name+d1.age+d2.color);<span class="comment">//测试一下是否成功</span>
+    System.<span class="keyword">out</span>.println(d2.name+d2.age+d2.color);
+
+   }
+}    
+</code></pre><h3 id="输出结果是：">输出结果是：</h3>
+<pre><code>    <span class="title">wang2white</span>
+    cai2white
+</code></pre><h3 id="this的用法，结合构造函数">this的用法，结合构造函数</h3>
+<p>首先新建一个类：person.java；在理解this的时候，我们可以把它理解为是：我，代表本身对象；<br>下面有使用到构造函数。    </p>
+<pre><code><span class="keyword">class</span> person{
+    <span class="built_in">String</span> name;
+    <span class="built_in">String</span> adress;
+    int age;
+    person(){
+        System.out.println(<span class="string">"no parameter"</span>);
+         }
+
+    <span class="comment">// the first using</span>
+    person(<span class="built_in">String</span> name,int age){
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+
+         }
+    person(<span class="built_in">String</span> name,<span class="built_in">String</span> adress,int age){
+        <span class="keyword">this</span>(name ,age);<span class="comment">//继承了上面的person，不用重新</span>
+        <span class="keyword">this</span>.adress =adress;
+         }
+
+    }
+</code></pre>
         </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2014/09/13/read/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
