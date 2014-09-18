@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Java子类实例化过程 | Vince</title>
+  <title>Java子类实例化过程和复写 | Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程</a>
+                                    <a href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程和复写</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -119,12 +119,12 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/Java/">&nbsp;&nbsp;&nbsp;Java</a>
-                                    <small>1</small>
+                                    <small>2</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/构造函数/">&nbsp;&nbsp;&nbsp;构造函数</a>
-                                    <small>1</small>
+                                    <small>0</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -148,7 +148,7 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程</a>
+                    <a  data-pjax href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程和复写</a>
                 
                     <a  data-pjax href="/2014/09/15/Java构造函数/">Java构造函数</a>
                 
@@ -184,7 +184,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">Java子类实例化过程</a></li>
+                        <li id="navbar-title"><a href="#">Java子类实例化过程和复写</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -217,7 +217,7 @@
                       
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java子类实例化过程</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java子类实例化过程和复写</h1>
 
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
@@ -227,7 +227,8 @@
     </span>
 
         <section class="post-content">
-            <h3 id="首先我们写出一个父类：person-java">首先我们写出一个父类：person.java</h3>
+            <p>下面的过程主要记录的是子类实例化和子类在继承父类过程中，函数的复写时，子类可以通过使用super调用。<br><a id="more"></a></p>
+<h3 id="首先我们写出一个父类：person-java">首先我们写出一个父类：person.java</h3>
 <pre><code><span class="keyword">class</span> person{
     String name;
     <span class="keyword">int</span> age;
@@ -257,8 +258,18 @@
         <span class="keyword">super</span>(name,age);<span class="comment">//在这里，调用了父类的构造函数，放在第一句</span>
         <span class="keyword">this</span>.grade = grade;
     }
+    <span class="keyword">void</span> study (){
+        <span class="keyword">super</span>.study();
+        System.out.println(<span class="string">"读书"</span>);
+    }
 }
-</code></pre><p><strong>说明：</strong>在子类示例化过程中，可以使用super（）；来调用父类的构造函数，并且需要放在第一句，类似this一样，复习一下，this在使用的时候可以调用同类的函数。</p>
+</code></pre><h3 id="说明：">说明：</h3>
+<ul>
+<li><p>在子类示例化过程中，可以使用super（）；来调用父类的构造函数，并且需要放在第一句，类似this一样，复习一下，this在使用的时候可以调用同类的函数。</p>
+</li>
+<li><p>复写（override）出现在具有父子关系的两个类当中，父类和子类各有一个函数，这个两个函数的定义（返回值了类型、函数名、参数列表）完全相同</p>
+</li>
+</ul>
 
         </section>
         <hr/>
