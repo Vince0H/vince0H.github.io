@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Archives: 2014/9 | Vince</title>
+  <title>Java子类实例化过程 | Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -184,7 +184,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Java子类实例化过程</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -203,185 +203,82 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/Java/' style='color:#D5D5D5'>Java</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java子类实例化过程</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-09-18T15:44:27.000Z"
+                              itemprop="datePublished">9月 18 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/Java/'>Java</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-18T15:44:27.000Z"
-                      itemprop="datePublished">9月 18 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                首先我们写出一个父类：person.java
-class person{
+        <section class="post-content">
+            <h3 id="首先我们写出一个父类：person-java">首先我们写出一个父类：person.java</h3>
+<pre><code><span class="keyword">class</span> person{
     String name;
-    int age;
+    <span class="keyword">int</span> age;
     person(){
-        System.out.println("Person的无参数构造函数");
+        System.out.<span class="keyword">println</span>(<span class="string">"Person的无参数构造函数"</span>);
          }
 
-    person(String name,int age){
-        this.name = name;
-        this.age = age
-                
-            </p>
-            
+    person(String name,<span class="keyword">int</span> age){
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+        System.out.<span class="keyword">println</span>(<span class="string">"person有参数构造函数"</span>);
+         }
+    <span class="keyword">void</span> study () {
+        System.out.<span class="keyword">println</span>(<span class="string">"学习"</span>);
+    }
+
+
+}
+</code></pre><h3 id="再次写出一个子类：student-java">再次写出一个子类：student.java</h3>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">student</span> <span class="inheritance"><span class="keyword">extends</span></span> <span class="title">person</span></span>{
+    <span class="keyword">int</span> grade ;
+    student () {
+        <span class="keyword">super</span>();<span class="comment">//调用父类构造函数，放在第一条语句，类似this</span>
+        System.out.println(<span class="string">"student无参数构造函数"</span>);
+    }
+    student(String name,<span class="keyword">int</span> age,<span class="keyword">int</span> grade){
+        <span class="keyword">super</span>(name,age);<span class="comment">//在这里，调用了父类的构造函数，放在第一句</span>
+        <span class="keyword">this</span>.grade = grade;
+    }
+}
+</code></pre><p><strong>说明：</strong>在子类示例化过程中，可以使用super（）；来调用父类的构造函数，并且需要放在第一句，类似this一样，复习一下，this在使用的时候可以调用同类的函数。</p>
+
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/构造函数/'>构造函数</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/15/Java构造函数/">Java构造函数</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-15T11:00:38.000Z"
-                      itemprop="datePublished">9月 15 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                在学习面向对象过程中，对于构造函数的使用非常方便，可以不用每new一个对象就要不断输入，但是个人发现，还要结合函数的重载才是最好的，请看下面的代码：
-新建一个类，dog.java
-class dog{
-   dog(){
-        //默认的函数，可以忽略
-   }
-    //下面重新构造dog（）函数
-   dog(String a,int b,String c){
-    name=a;
-    age=b;
-    col
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/正能量/'>正能量</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/13/read/">你的阅读造就你了</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-13T13:08:47.000Z"
-                      itemprop="datePublished">9月 13 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p><img src="http://ww1.sinaimg.cn/large/699f8972gw1ekb6mm5dptj211y0lc0yw.jpg" alt=""><br>大学生活还是让你不满意么？课程枯燥，老师敷衍，有人创业，有人恋爱。你心志不低，想要一份光辉的未来.<br>
-                
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/Android/'>Android</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/13/2014-9-13/">Android学习路线</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-13T12:49:53.000Z"
-                      itemprop="datePublished">9月 13 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p>很多朋友都对学习路线问题感到迷茫，特别是还在上学的朋友们。在这里就详细的为大家介绍一下。<br>
-                
-            </p>
+            <a class="share-button" data-original-title title>Share this Post</a>
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/12/hello-world/">Hello World</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-12T12:52:05.000Z"
-                      itemprop="datePublished">9月 12 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick Start
-Create a new 
-                
-            </p>
+            <a data-pjax class="older-posts" href="/2014/09/15/Java构造函数/">Next Post →</a>
             
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 

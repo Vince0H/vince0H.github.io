@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/09/15/Java构造函数/">Java构造函数</a>
                                 </li>
                                 
@@ -114,6 +118,11 @@
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/Java/">&nbsp;&nbsp;&nbsp;Java</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/构造函数/">&nbsp;&nbsp;&nbsp;构造函数</a>
                                     <small>1</small>
                                 </li>
@@ -139,6 +148,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/09/18/Java子类实例化过程/">Java子类实例化过程</a>
+                
                     <a  data-pjax href="/2014/09/15/Java构造函数/">Java构造函数</a>
                 
                     <a  data-pjax href="/2014/09/13/read/">你的阅读造就你了</a>
@@ -156,6 +167,8 @@
                 
                 
                     <a data-pjax href="/tags/Android/">&nbsp;&nbsp;Android</a>
+                
+                    <a data-pjax href="/tags/Java/">&nbsp;&nbsp;Java</a>
                 
                     <a data-pjax href="/tags/构造函数/">&nbsp;&nbsp;构造函数</a>
                 
@@ -248,22 +261,24 @@
 </code></pre><h3 id="this的用法，结合构造函数">this的用法，结合构造函数</h3>
 <p>首先新建一个类：person.java；在理解this的时候，我们可以把它理解为是：我，代表本身对象；<br>下面有使用到构造函数。    </p>
 <pre><code><span class="keyword">class</span> person{
-    <span class="built_in">String</span> name;
-    <span class="built_in">String</span> adress;
-    int age;
+    String name;
+    String adress;
+    <span class="keyword">int</span> age;
     person(){
-        System.out.println(<span class="string">"no parameter"</span>);
+        System.<span class="keyword">out</span>.println(<span class="string">"没有参数的构造函数"</span>);
          }
 
     <span class="comment">// the first using</span>
-    person(<span class="built_in">String</span> name,int age){
+    person(String name,<span class="keyword">int</span> age){
+        <span class="keyword">this</span>();<span class="comment">//只能放在第一行</span>
         <span class="keyword">this</span>.name = name;
         <span class="keyword">this</span>.age = age;
-
+        System.<span class="keyword">out</span>.println(<span class="string">"两个参数的构造函数“）；
          }
-    person(<span class="built_in">String</span> name,<span class="built_in">String</span> adress,int age){
-        <span class="keyword">this</span>(name ,age);<span class="comment">//继承了上面的person，不用重新</span>
-        <span class="keyword">this</span>.adress =adress;
+    person(String name,String adress,int age){
+        this(name ,age);//继承了上面的person，只能放在第一行
+        this.adress =adress;
+        System.out.println("</span>三个参数的构造函数”）；
          }
 
     }
@@ -272,7 +287,7 @@
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            <a data-pjax class="newer-posts" href="/2014/09/18/Java子类实例化过程/">← Prev Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
