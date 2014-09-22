@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Java构造函数 | Vince</title>
+  <title>Java当中的异常处理 | Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -215,7 +215,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">Java构造函数</a></li>
+                        <li id="navbar-title"><a href="#">Java当中的异常处理</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -248,81 +248,68 @@
                       
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java构造函数</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java当中的异常处理</h1>
 
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-09-15T11:00:38.000Z"
-                              itemprop="datePublished">9月 15 2014</time>
+                        <time datetime="2014-09-22T14:31:14.000Z"
+                              itemprop="datePublished">9月 22 2014</time>
                     </div>
     </span>
 
         <section class="post-content">
-            <p>在学习面向对象过程中，对于构造函数的使用非常方便，可以不用每new一个对象就要不断输入，但是个人发现，还要结合函数的重载才是最好的，请看下面的代码：</p>
-<h3 id="新建一个类，dog-java">新建一个类，dog.java</h3>
-<pre><code><span class="keyword">class</span> dog{
-   dog(){
-        <span class="comment">//默认的函数，可以忽略</span>
-   }
-    <span class="comment">//下面重新构造dog（）函数</span>
-   dog(<span class="built_in">String</span> a,int b,<span class="built_in">String</span> c){
-    name=a;
-    age=b;
-    color=c;
-   }
-   <span class="built_in">String</span> name;
-   int age;
-   <span class="built_in">String</span> color;
-
-
-}
-</code></pre><h3 id="新建一个测试类，testjava">新建一个测试类，testjava</h3>
-<pre><code>class test{
-<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String args[]){
-    dog d1=<span class="keyword">new</span> dog(<span class="string">"wang"</span>,<span class="number">2</span>,<span class="string">"back"</span>);<span class="comment">//重载了构造函数，可以直接输入</span>
-    dog d2=<span class="keyword">new</span> dog(<span class="string">"cai"</span>,<span class="number">2</span>,<span class="string">"white"</span>);<span class="comment">//方便，不用一个个输入</span>
-    System.<span class="keyword">out</span>.println(d1.name+d1.age+d2.color);<span class="comment">//测试一下是否成功</span>
-    System.<span class="keyword">out</span>.println(d2.name+d2.age+d2.color);
-
-   }
-}    
-</code></pre><h3 id="输出结果是：">输出结果是：</h3>
-<pre><code>    <span class="title">wang2white</span>
-    cai2white
-</code></pre><h3 id="this的用法，结合构造函数">this的用法，结合构造函数</h3>
-<p>首先新建一个类：person.java；在理解this的时候，我们可以把它理解为是：我，代表本身对象；<br>下面有使用到构造函数。    </p>
-<pre><code><span class="keyword">class</span> person{
-    String name;
-    String adress;
-    <span class="keyword">int</span> age;
-    person(){
-        System.<span class="keyword">out</span>.println(<span class="string">"没有参数的构造函数"</span>);
-         }
-
-    <span class="comment">// the first using</span>
-    person(String name,<span class="keyword">int</span> age){
-        <span class="keyword">this</span>();<span class="comment">//只能放在第一行</span>
-        <span class="keyword">this</span>.name = name;
-        <span class="keyword">this</span>.age = age;
-        System.<span class="keyword">out</span>.println(<span class="string">"两个参数的构造函数“）；
-         }
-    person(String name,String adress,int age){
-        this(name ,age);//继承了上面的person，只能放在第一行
-        this.adress =adress;
-        System.out.println("</span>三个参数的构造函数”）；
-         }
-
+            <p>什么是异常：中断正常指令流的事件，在运行的时候出现错误。</p>
+<p>异常跟语法错误是两种不同的情况，然而什么时候用哪一个异常处理方法，这需要编程经验。</p>
+<p>比如：try….catch….finally<br><a id="more"></a></p>
+<ul>
+<li><p>RuntimeException  +   throw的作用</p>
+<pre><code>  class user{
+      <span class="keyword">private</span> <span class="keyword">int</span> age;
+      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setAge</span>(<span class="keyword">int</span> age){
+          <span class="keyword">if</span>(age&lt;<span class="number">0</span>){
+              <span class="comment">//自定义异常语句</span>
+              RuntimeException e = <span class="keyword">new</span> RuntimeException(<span class="string">"age不能为负数"</span>);
+              <span class="keyword">throw</span> e;<span class="comment">//抛出异常，在这里终止运行</span>
+          }
+      }
+  }
+</code></pre></li>
+<li><p>try+catch+throws的作用,子类</p>
+</li>
+</ul>
+<pre><code>    class user{
+        <span class="keyword">private</span> <span class="keyword">int</span> age;
+        <span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">setAge</span>(<span class="keyword">int</span> age) <span class="keyword">throws</span> Exception{
+            <span class="keyword">if</span>(age&lt;<span class="number">0</span>){
+                <span class="comment">//自定义异常语句</span>
+                Exception e = <span class="keyword">new</span> Exception(<span class="string">"age不能为负数"</span>);
+                <span class="keyword">throw</span> e;<span class="comment">//抛出异常，在这里终止运行</span>
+            }
+            <span class="keyword">this</span>.age=age;
+        }
     }
+</code></pre><p>测试类：test.java</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">class</span> test{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {
+        user user=<span class="keyword">new</span> user();
+        <span class="keyword">try</span>{
+            user.setAge(-<span class="number">20</span>);
+        }
+        <span class="keyword">catch</span>(Exception e){
+            System.<span class="keyword">out</span>.println(e);
+        }
+    }
+}
 </code></pre>
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a data-pjax class="newer-posts" href="/2014/09/18/Java子类实例化过程/">← Prev Post</a>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
-            <a data-pjax class="older-posts" href="/2014/09/13/read/">Next Post →</a>
+            <a data-pjax class="older-posts" href="/2014/09/20/Chrome下强制http重定向到https的方法/">Next Post →</a>
             
         </nav>
         <br/>
