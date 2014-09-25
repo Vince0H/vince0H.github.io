@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Java当中的异常处理 | Vince</title>
+  <title>Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -234,7 +234,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">Java当中的异常处理</a></li>
+                        <li id="navbar-title"><a href="#">undefined</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -253,92 +253,47 @@
 
 
 <!-- -->
-<!--<body class="post-template">-->
+<!--<body class="home-template">-->
 <!---->
   
-
 <main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                      
-                      <a data-pjax href='/tags/Java/' style='color:#D5D5D5'>Java</a>
-                      
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java当中的异常处理</h1>
 
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2014-09-22T14:31:14.000Z"
-                              itemprop="datePublished">9月 22 2014</time>
-                    </div>
-    </span>
+    
+    <article class="post">
 
-        <section class="post-content">
-            <p>什么是异常：中断正常指令流的事件，在运行的时候出现错误。</p>
-<p>异常跟语法错误是两种不同的情况，然而什么时候用哪一个异常处理方法，这需要编程经验。</p>
-<p>比如：try….catch….finally<br><a id="more"></a></p>
-<ul>
-<li><p>RuntimeException  +   throw的作用</p>
-<pre><code>  class user{
-      <span class="keyword">private</span> <span class="keyword">int</span> age;
-      <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setAge</span>(<span class="keyword">int</span> age){
-          <span class="keyword">if</span>(age&lt;<span class="number">0</span>){
-              <span class="comment">//自定义异常语句</span>
-              RuntimeException e = <span class="keyword">new</span> RuntimeException(<span class="string">"age不能为负数"</span>);
-              <span class="keyword">throw</span> e;<span class="comment">//抛出异常，在这里终止运行</span>
-          }
-      }
-  }
-</code></pre></li>
-<li><p>try+catch+throws的作用,子类</p>
-</li>
-</ul>
-<pre><code>    class user{
-        <span class="keyword">private</span> <span class="keyword">int</span> age;
-        <span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">setAge</span>(<span class="keyword">int</span> age) <span class="keyword">throws</span> Exception{
-            <span class="keyword">if</span>(age&lt;<span class="number">0</span>){
-                <span class="comment">//自定义异常语句</span>
-                Exception e = <span class="keyword">new</span> Exception(<span class="string">"age不能为负数"</span>);
-                <span class="keyword">throw</span> e;<span class="comment">//抛出异常，在这里终止运行</span>
-            }
-            <span class="keyword">this</span>.age=age;
-        }
-    }
-</code></pre><p>测试类：test.java</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">class</span> test{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {
-        user user=<span class="keyword">new</span> user();
-        <span class="keyword">try</span>{
-            user.setAge(-<span class="number">20</span>);
-        }
-        <span class="keyword">catch</span>(Exception e){
-            System.<span class="keyword">out</span>.println(e);
-        }
-    }
-}
-</code></pre>
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2014/09/12/hello-world/">Hello World</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2014-09-12T12:52:05.000Z"
+                      itemprop="datePublished">9月 12 2014</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
+Quick Start
+Create a new 
+                
+            </p>
+            
         </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a data-pjax class="newer-posts" href="/2014/09/23/更改hosts文件上网不在屏蔽/">← Prev Post</a>
-            
-            <a class="share-button" data-original-title title>Share this Post</a>
-            
-            <a data-pjax class="older-posts" href="/2014/09/20/Chrome下强制http重定向到https的方法/">Next Post →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
-
-
     </article>
+    
+    <nav class="pagination" role="pagination">
+        
+        <a data-pjax class="newer-posts" href="/">← Newer Posts</a>
+        
+        <span class="page-number">Page 2 of 2</span>
+        
+    </nav>
 </main>
 
 
