@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/10/01/内部类和匿名内部类/">内部类和匿名内部类</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/09/30/Android中Intent的使用/">Android中Intent的使用</a>
                                 </li>
                                 
@@ -118,6 +122,11 @@
                                 </li>
                                 
                                 <li class="search-category-li mp-pjax">
+                                    <a href="/categories/2014-10/">&nbsp;&nbsp;&nbsp;2014-10</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
                                     <a href="/categories/Android/">&nbsp;&nbsp;&nbsp;Android</a>
                                     <small>0</small>
                                 </li>
@@ -161,7 +170,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/Java/">&nbsp;&nbsp;&nbsp;Java</a>
-                                    <small>4</small>
+                                    <small>5</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -195,6 +204,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/10/01/内部类和匿名内部类/">内部类和匿名内部类</a>
+                
                     <a  data-pjax href="/2014/09/30/Android中Intent的使用/">Android中Intent的使用</a>
                 
                     <a  data-pjax href="/2014/09/30/Android中Activity的使用/">Android中Activity的使用</a>
@@ -223,6 +234,8 @@
                 
                 
                     <a data-pjax href="/categories/2014-09/">&nbsp;&nbsp;2014-09</a>
+                
+                    <a data-pjax href="/categories/2014-10/">&nbsp;&nbsp;2014-10</a>
                 
                     <a data-pjax href="/categories/Android/">&nbsp;&nbsp;Android</a>
                 
@@ -296,13 +309,45 @@
     </span>
 
         <section class="post-content">
-            <ul>
-<li>多个Activity之间的关系</li>
-<li>intent的基本关系</li>
-<li>在一个Activity当中启动另外一个Activity的方法</li>
-<li>使用Intent在Activity之间传递数据的基本方法</li>
+            <p><strong>在这篇文章中，开始进行期待已久的Android开发学习，但是我在这里直接开始记录自己的学习情况。当然，在开始之前我们要布置好开发环境，在这里不会详细写出布置环境的过程，自己去google一些，很多这样的教程，下面我说说布置开发环境的过程：</strong><br><a id="more"></a></p>
+<ol>
+<li>Java开发环境，这时必须的，不过在你学习Java的时候就应该布置好了</li>
+<li>ADT开发工具，这个在Google官网有，它已经继承了SDK，不用另外下载</li>
+<li>Android模拟器，我使用的是Genymotion，速度杠杠的</li>
+</ol>
+<h3 id="直接进入正题">直接进入正题</h3>
+<p>创建Activity的要点：</p>
+<ul>
+<li>一个Activity就是一个类，并且要继承Activity</li>
+<li>需要复写onCreate方法</li>
+<li>每一个Activity都需要在AndroidMainfest.xml文件中进行配置</li>
+<li>要为Activity放置一些控件</li>
+<li>这个Activity要在AndroidMainfest.xml中注册、</li>
 </ul>
-
+<p>这时在第一个Activity中使用的</p>
+<pre><code>setContentView(R.layout.activity_main);<span class="comment">//设置使用的布局文件是哪一个</span>
+<span class="constant">TextView myTextView</span> = (TextView)findViewById(R.id.mytestview);<span class="comment">//第一课</span>
+<span class="constant">Button myButton</span> = (Button)findViewById(R.id.mybutton);
+myTextView.setText(<span class="string">"我的第一个TextView"</span>);
+myButton.setText(<span class="string">"我的第一个Button"</span>);
+</code></pre><p>然后是布局文件activity_main.xml,采用线性布局。</p>
+<pre><code>&lt;LinearLayout xmlns:<span class="variable">android=</span><span class="string">"http://schemas.android.com/apk/res/android"</span>
+      android:<span class="variable">orientation=</span><span class="string">"vertical"</span>
+      android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+      android:<span class="variable">layout_height=</span><span class="string">"fill_parent"</span>
+       &gt;
+&lt;Button
+    android:<span class="variable">id=</span><span class="string">"@+id/mybutton"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>       
+    /&gt;
+&lt;TextView
+    android:<span class="variable">id=</span><span class="string">"@+id/mytextview"</span>
+    android:<span class="variable">layout_width=</span><span class="string">"fill_parent"</span>
+    android:<span class="variable">layout_height=</span><span class="string">"wrap_content"</span>       
+    /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">

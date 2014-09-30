@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2014/10/01/内部类和匿名内部类/">内部类和匿名内部类</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2014/09/30/Android中Intent的使用/">Android中Intent的使用</a>
                                 </li>
                                 
@@ -118,6 +122,11 @@
                                 </li>
                                 
                                 <li class="search-category-li mp-pjax">
+                                    <a href="/categories/2014-10/">&nbsp;&nbsp;&nbsp;2014-10</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-category-li mp-pjax">
                                     <a href="/categories/Android/">&nbsp;&nbsp;&nbsp;Android</a>
                                     <small>0</small>
                                 </li>
@@ -161,7 +170,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/Java/">&nbsp;&nbsp;&nbsp;Java</a>
-                                    <small>4</small>
+                                    <small>5</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
@@ -195,6 +204,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2014/10/01/内部类和匿名内部类/">内部类和匿名内部类</a>
+                
                     <a  data-pjax href="/2014/09/30/Android中Intent的使用/">Android中Intent的使用</a>
                 
                     <a  data-pjax href="/2014/09/30/Android中Activity的使用/">Android中Activity的使用</a>
@@ -223,6 +234,8 @@
                 
                 
                     <a data-pjax href="/categories/2014-09/">&nbsp;&nbsp;2014-09</a>
+                
+                    <a data-pjax href="/categories/2014-10/">&nbsp;&nbsp;2014-10</a>
                 
                     <a data-pjax href="/categories/Android/">&nbsp;&nbsp;Android</a>
                 
@@ -292,7 +305,7 @@
     </span>
 
         <section class="post-content">
-            <p>Intent的基本作用</p>
+            <p>Intent的基本作用,就是两个Activity之间的通信用的，可以传递下面的信息</p>
 <p>一个Intent对象包含了一组信息</p>
 <ul>
 <li>Component name</li>
@@ -300,14 +313,62 @@
 <li>Data</li>
 <li>Category</li>
 <li>Extras</li>
-<li>Flags</li>
-</ul>
+<li>Flags<a id="more"></a>
 
+</li>
+</ul>
+<p>首相创建第一个Activity，这个Activity可以是主Activity，在这次学习中，我是使用按钮来测试的，首先创建第一个按钮：</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="inheritance"><span class="keyword">extends</span></span> <span class="title">Activity</span> </span>{
+    <span class="keyword">private</span> Button myButton = <span class="keyword">null</span>;
+    @Override
+    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);<span class="comment">//设置使用的布局文件是哪一个</span>
+        myButton = (Button)findViewById(R.id.mybutton);<span class="comment">//得到这个按钮。//第二课</span>
+        myButton.setText(<span class="string">"我的第一个Button"</span>);
+        <span class="comment">//下面将监听器捆绑在按钮中</span>
+       myButton.setOnClickListener(<span class="keyword">new</span> MyButtonListener());
+    }  
+    <span class="comment">//下面是一个监听器</span>
+    <span class="class"><span class="keyword">class</span> <span class="title">MyButtonListener</span> <span class="inheritance"><span class="keyword">implements</span></span> <span class="title">OnClickListener</span></span>{
+
+
+
+        @Override
+        <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) {
+            <span class="comment">// TODO Auto-generated method stub</span>
+            <span class="comment">//生成一个Intent对象</span>
+            Intent intent = <span class="keyword">new</span> Intent();
+            intent.putExtra(<span class="string">"textIntent"</span>,<span class="string">"123"</span>);<span class="comment">//在Intent加入键值对“textIntent”，值是123</span>
+            intent.setClass(MainActivity.<span class="keyword">this</span>, OtherActivity.class);
+            MainActivity.<span class="keyword">this</span>.startActivity(intent);<span class="comment">//这个是Activity的方法，</span>
+        }
+
+    }
+}
+</code></pre><p>然后创建第二个Activity，它有自己布局文件，当然我们在上面的监听器中，如果不传递数据过来，就不用使用getIntent（）了，如下：</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OtherActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>{
+
+    <span class="keyword">private</span> TextView myTextView = <span class="keyword">null</span>;
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {
+        <span class="comment">// TODO Auto-generated method stub</span>
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.other);<span class="comment">//设置布局文件</span>
+
+        Intent intent = getIntent();<span class="comment">//将MainActivity.javaIntent传递的值取出来</span>
+        String value = intent.getStringExtra(<span class="string">"textIntent"</span>);
+
+        myTextView = (TextView)findViewById(R.id.myTextView);<span class="comment">//使用这个按钮</span>
+        myTextView.setText(value);
+    }
+}
+</code></pre>
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            <a data-pjax class="newer-posts" href="/2014/10/01/内部类和匿名内部类/">← Prev Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
