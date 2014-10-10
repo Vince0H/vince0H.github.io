@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: 正能量 | Vince</title>
+  <title>Java多线程学习 | Vince</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -278,7 +278,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">Java多线程学习</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -297,142 +297,112 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/Java/' style='color:#D5D5D5'>Java</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">Java多线程学习</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2014-10-10T09:09:37.000Z"
+                              itemprop="datePublished">10月 10 2014</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/正能量/'>正能量</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/10/09/不要自称程序员/">不要自称程序员</a>
-            </h1>
+        <section class="post-content">
+            <ul>
+<li>进程和线程</li>
+<li>多线程程序的运行模式</li>
+<li>定义线程的方法</li>
+</ul>
+<p>多进程：在操作系统中能同时运行多个任务（程序）</p>
+<p>多线程：在同一个应用程序中有多个顺序流（同时）执行<br><a id="more"></a></p>
+<h3 id="创建线程的方法">创建线程的方法</h3>
+<p>@Vindroid</p>
+<p>方式 1，创建两个类test.java和firstthread.java</p>
+<pre><code>class test{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {
+        <span class="comment">//生成线程类的对象;</span>
+        firstthread ft = <span class="keyword">new</span> firstthread();
+        <span class="comment">//启动线程</span>
+        ft.start();
+        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++){
+        System.<span class="keyword">out</span>.println(i);
+        }
+    }
+}    
+</code></pre><hr>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">firstthread</span> <span class="inheritance"><span class="keyword">extends</span></span> <span class="title">Thread</span></span>{
+<span class="keyword">public</span> <span class="keyword">void</span> run(){
+    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++){
+        System.out.println(<span class="string">"线程测试"</span>);
+    }
+}
+}
+</code></pre><p>方式二：同样创建两个类，使用了同步锁，synchronized():</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="inheritance"><span class="keyword">implements</span></span> <span class="title">Runnable</span></span>{<span class="comment">//该类实现了Runnable接口</span>
+    <span class="keyword">int</span> i = <span class="number">100</span>;
+    <span class="keyword">public</span> <span class="keyword">void</span> run(){<span class="comment">//复写run方法</span>
+        <span class="keyword">while</span>(<span class="keyword">true</span>){
+            synchronized(<span class="keyword">this</span>){<span class="comment">//可以确保获得this的线程可以顺利执行完下面的代码，确保安全性，为对象加锁</span>
+                System.out.println(Thread.currentThread().getName()+<span class="string">"--&gt;"</span>+i);
+                i--;<span class="comment">//</span>
+                Thread.yield();<span class="comment">//让出CPU </span>
+                <span class="keyword">if</span>(i&lt;<span class="number">0</span>){
+                    <span class="keyword">break</span>;
+                }
+            }
+        }
+    }
+}
+</code></pre><hr>
+<pre><code>class test1{
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {
+        MyThread myThread = <span class="keyword">new</span> MyThread();
+        <span class="comment">//生成两个Thread对象，但是这两个Thread对象共用一个线程体</span>
+        Thread t1 = <span class="keyword">new</span> Thread(myThread);<span class="comment">//新建两个进程</span>
+        Thread t2 = <span class="keyword">new</span> Thread(myThread);
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-10-09T03:58:59.000Z"
-                      itemprop="datePublished">10月 9 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p><strong>今天无意间看到这篇文章，很有感触，转载到我的博客园里，有时间再看看。<br>不要自称程序员 作者：阮一峰<br>每年都有无数年轻程序员，加入软件行业。<br>他们在学校里学过编程，但是对这个行业的现实一无所知。<br>Patrick McKenzie是美国一家小软件公司的老板，他写了一篇长文，介绍这个行业的一些实际情况。我看了以后很感慨，有些地方很受启发。我选择了一部分，翻译如下。</strong><br>
-                
-            </p>
-            
+        <span class="comment">//每一个线程都有名字，可以通过Thread对象的setName（）方法设置线程名字，也可以使用getName方法获得线程的名字</span>
+        t1.setName(<span class="string">"线程1"</span>);
+        t2.setName(<span class="string">"线程2"</span>);
+
+        <span class="comment">//分别启动每个线程</span>
+        t1.start();
+        t2.start();
+    }
+}
+</code></pre>
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/正能量/'>正能量</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/25/现在开始/">现在开始,Go</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-25T14:54:19.000Z"
-                      itemprop="datePublished">9月 25 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p><img src="http://ww3.sinaimg.cn/large/699f8972gw1ekp476zz61j20hg0brmz2.jpg" alt=""></p>
-<h3 id="推荐这篇文章给大学生阅读：">推荐这篇文章给大学生阅读：</h3>
-<p>很多年前读大学的时候，我决定制定一个计划挑战自己：只用三个学期完成其他人通常花费四年的课程，能否毕业。这篇文章详细的说明了我在成功实现该目标过程中的所有时间管理技巧。<br>
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/正能量/'>正能量</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/19/程序员等级/">程序员也分十级，赶紧进来看看你是哪一级</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-19T14:53:11.000Z"
-                      itemprop="datePublished">9月 19 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p><img src="http://ww2.sinaimg.cn/large/699f8972gw1eki6f76cllj20hr09ydin.jpg" alt=""></p>
-<ul>
-<li><strong>第一级：神人，天资过人而又是技术狂热者同时还拥有过人的商业头脑，高瞻远瞩，技术过人，大器也。如丁磊，求伯君。</strong>
-　
-                
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/正能量/'>正能量</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2014/09/13/read/">你的阅读造就你了</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2014-09-13T13:08:47.000Z"
-                      itemprop="datePublished">9月 13 2014</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                <p><img src="http://ww1.sinaimg.cn/large/699f8972gw1ekb6mm5dptj211y0lc0yw.jpg" alt=""><br>大学生活还是让你不满意么？课程枯燥，老师敷衍，有人创业，有人恋爱。你心志不低，想要一份光辉的未来.<br>
-                
-            </p>
+            <a class="share-button" data-original-title title>Share this Post</a>
             
+            <a data-pjax class="older-posts" href="/2014/10/09/不要自称程序员/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page  of </span>
-        
-    </nav>
 </main>
 
 
