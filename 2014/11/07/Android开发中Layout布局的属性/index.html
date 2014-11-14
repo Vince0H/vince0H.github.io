@@ -4,14 +4,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Android开发中Layout布局的属性 | Vince</title>
+  <title>Android开发中Layout布局的属性 | Vince Blog</title>
   <meta name="description" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" type="text/css" href="/css/component.css" />
   <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="Vince">
+  <meta name="generator" content="Vince Blog">
   <script src="http://static.duoshuo.com/embed.js"></script>
   
   
@@ -299,7 +299,7 @@
                 <li  style="border-left: 1px solid #c6d0da;">
                     <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
                 </li>
-                <li ><a id="nexus-back" data-pjax href="/">Vince</a></li>
+                <li ><a id="nexus-back" data-pjax href="/">Vince Blog</a></li>
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
@@ -375,7 +375,23 @@ android:<span class="variable">layout_height=</span><span class="string">"fill_p
 android:<span class="variable">orientation=</span><span class="string">"vertical"</span> &gt;
 。。。
 &lt;/LinearLayout&gt;
-</code></pre>
+</code></pre><hr>
+<h3 id="Android_fill_parent、wrap_content和match_parent的区别">Android fill_parent、wrap_content和match_parent的区别</h3>
+<p>三个属性都用来适应视图的水平或垂直大小，一个以视图的内容或尺寸为基础的布局比精确地指定视图范围更加方便。</p>
+<ul>
+<li>fill_parent</li>
+</ul>
+<p>设置一个构件的布局为fill_parent将强制性地使构件扩展，以填充布局单元内尽可能多的空间。这跟Windows控件的dockstyle属性大体一致。设置一个顶部布局或控件为fill_parent将强制性让它布满整个屏幕。</p>
+<ul>
+<li>wrap_content</li>
+</ul>
+<p>设置一个视图的尺寸为wrap_content将强制性地使视图扩展以显示全部内容。以TextView和ImageView控件为例，设置为wrap_content将完整显示其内部的文本和图像。布局元素将根据内容更改大小。设置一个视图的尺寸为wrap_content大体等同于设置Windows控件的Autosize属性为True。</p>
+<ul>
+<li><p>match_parent</p>
+<p> Android2.2中match_parent和fill_parent是一个意思 .两个参数意思一样，match_parent更贴切，于是从2.2开始两个词都可以用。那么如果考虑低版本的使用情况你就需要用fill_parent了</p>
+</li>
+</ul>
+
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
@@ -402,7 +418,7 @@ android:<span class="variable">orientation=</span><span class="string">"vertical
 <footer class="site-footer">
     
     <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; Vince 2014</section>
+        <section class="copyright"><a href="/"></a> &copy; Vince Blog 2014</section>
         <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
     </div>
 </footer>
